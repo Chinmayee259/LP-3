@@ -1,0 +1,208 @@
+Survey Report: Types of Blockchains and Their Real-Time Use Cases
+1. Introduction
+Blockchain is a distributed ledger technology (DLT) that stores data in a sequence of blocks. Each block contains transaction information and is linked to the previous block using cryptographic techniques. Unlike traditional databases, blockchain does not require a single central authority to maintain the complete record.
+
+Blockchain technology was initially introduced for digital currencies such as Bitcoin, but it is now being used in many areas including banking, healthcare, supply chain management, voting, education, insurance, and digital identity.
+
+The main purpose of this survey is to study the different types of blockchains and understand their practical, real-world applications.
+2. Objectives of the Survey
+The main objectives are:
+- To understand the basic concept of blockchain.
+- To study different types of blockchain networks.
+- To compare public, private, consortium, and hybrid blockchains.
+- To identify real-world applications of each type.
+- To understand the advantages and limitations of different blockchain types.
+3. Types of Blockchain
+Blockchain networks can mainly be classified into four types:
+1. Public Blockchain
+2. Private Blockchain
+3. Consortium Blockchain
+4. Hybrid Blockchain
+4. Public Blockchain
+A public blockchain is an open and decentralized network in which anyone can participate. Users can generally view transactions and, depending on the blockchain's rules, participate in transaction validation.
+
+Examples include Bitcoin and Ethereum.
+Characteristics
+- Open to everyone
+- Highly decentralized
+- Transparent transactions
+- No single organization controls the network
+- Uses consensus mechanisms such as Proof of Work or Proof of Stake
+Real-Time Use Cases
+1. Cryptocurrency
+
+Bitcoin uses a public blockchain to enable peer-to-peer digital payments without requiring a central bank.
+
+2. Decentralized Applications (DApps)
+
+Ethereum provides a blockchain platform on which developers can create decentralized applications and smart contracts.
+
+3. NFTs
+
+Public blockchains can record ownership and transfers of digital assets such as NFTs.
+
+4. Decentralized Finance (DeFi)
+
+Financial services such as lending, borrowing, and decentralized exchanges can be implemented using blockchain-based smart contracts.
+Advantages
+- High transparency
+- Decentralization
+- Greater resistance to censorship
+- Anyone can participate
+Limitations
+- Scalability can be challenging
+- Transaction fees can increase during congestion
+- Some networks may consume significant computational resources
+5. Private Blockchain
+A private blockchain is controlled by a single organization. Only authorized participants can join the network or perform specific operations.
+
+Unlike public blockchains, private blockchains focus more on privacy, access control, and organizational efficiency.
+
+Examples include enterprise blockchain platforms such as Hyperledger Fabric.
+Characteristics
+- Controlled by one organization
+- Permission-based access
+- Faster transactions
+- Greater privacy
+- Participants are known and authorized
+Real-Time Use Cases
+1. Banking
+
+Banks can use private blockchains to maintain internal transaction records and automate processes between departments.
+
+2. Healthcare
+
+Hospitals can use permissioned blockchain systems to share patient information securely among authorized healthcare professionals.
+
+3. Supply Chain
+
+Companies can track products from manufacturing to delivery while restricting access to authorized participants.
+
+4. Enterprise Record Management
+
+Organizations can use blockchain to maintain tamper-evident records of internal transactions and processes.
+Advantages
+- Faster than many public blockchains
+- Better privacy
+- Access can be controlled
+- Suitable for enterprise applications
+Limitations
+- Less decentralized
+- Controlled by a single organization
+- Trust is still placed in the organization operating the network
+6. Consortium Blockchain
+A consortium blockchain, also called a federated blockchain, is controlled by multiple organizations rather than one organization.
+
+Only selected organizations are allowed to participate in maintaining and validating the blockchain.
+Characteristics
+- Controlled by multiple organizations
+- Permission-based
+- More decentralized than a private blockchain
+- Suitable for collaboration between organizations
+Real-Time Use Cases
+1. Banking and Financial Institutions
+
+Multiple banks can share a blockchain network for interbank transactions and settlement.
+
+2. Supply Chain Management
+
+Manufacturers, suppliers, logistics companies, and retailers can share a common blockchain to track products.
+
+3. Insurance
+
+Insurance companies can share verified information to reduce fraudulent claims and improve claim processing.
+
+4. Trade Finance
+
+Banks, exporters, importers, and logistics companies can use a shared blockchain to record trade documents and transactions.
+Advantages
+- Shared control
+- Better privacy than public blockchain
+- Faster processing
+- Reduces the need for repeated verification between organizations
+Limitations
+- Requires agreement between participating organizations
+- Governance can be complicated
+- Not completely decentralized
+7. Hybrid Blockchain
+A hybrid blockchain combines features of both public and private blockchains.
+
+Some information can be made publicly accessible, while sensitive information remains restricted to authorized users.
+Characteristics
+- Combination of public and private features
+- Selective transparency
+- Access control
+- Suitable for organizations that require both privacy and public verification
+Real-Time Use Cases
+1. Healthcare
+
+General information or verification records can be publicly accessible, while sensitive patient information remains private.
+
+2. Government
+
+Government organizations can keep confidential records private while making selected information publicly verifiable.
+
+3. Real Estate
+
+Property ownership information can be securely stored while selected ownership records can be made publicly verifiable.
+
+4. Supply Chain
+
+Companies can keep sensitive business information private while allowing customers to verify product authenticity or origin.
+Advantages
+- Provides both privacy and transparency
+- Flexible access control
+- Suitable for complex business requirements
+Limitations
+- More complex to design
+- Governance can be difficult
+- Implementation may require significant technical infrastructure
+8. Comparison of Blockchain Types
+Feature	Public	Private	Consortium	Hybrid
+Access	Anyone	Authorized users	Selected organizations	Partly public, partly restricted
+Control	Decentralized	Single organization	Multiple organizations	Combination
+Transparency	High	Low/controlled	Controlled	Selective
+Privacy	Lower	High	High	High
+Speed	Comparatively lower	High	High	High
+Participants	Anyone	Organization members	Consortium members	Public + authorized users
+Main Use	Cryptocurrency, DApps	Enterprise systems	Inter-organizational systems	Government, healthcare, supply chain
+
+
+9. Real-Time Applications of Blockchain
+Blockchain technology is being applied across many industries.
+Industry	Application	Suitable Blockchain
+Finance	Cryptocurrency and DeFi	Public
+Banking	Internal records and transactions	Private
+Supply Chain	Product tracking	Private/Consortium
+Healthcare	Secure medical records	Private/Hybrid
+Insurance	Claim verification	Consortium
+Government	Digital records and verification	Hybrid
+Real Estate	Property records	Hybrid
+Trade	Trade documentation	Consortium
+Digital Identity	Identity verification	Public/Hybrid
+Entertainment	NFTs and digital ownership	Public
+
+
+10. Advantages of Blockchain
+- Decentralization: Data does not necessarily depend on a single central authority.
+- Transparency: Transactions can be visible to permitted participants.
+- Security: Cryptographic techniques help protect blockchain records.
+- Immutability: Once recorded and sufficiently confirmed, data is difficult to alter without detection.
+- Traceability: Transactions and assets can be tracked through their history.
+- Automation: Smart contracts can automatically execute predefined rules.
+11. Challenges of Blockchain
+Despite its benefits, blockchain has several challenges:
+- Scalability issues in some networks
+- Transaction costs
+- Regulatory uncertainty
+- Privacy concerns
+- Integration with existing systems
+- Complex development and maintenance
+- Energy consumption concerns for some consensus mechanisms
+- Lack of common standards across different blockchain platforms
+12. Conclusion
+Blockchain has developed from a technology primarily associated with cryptocurrency into a technology with applications across many industries. The four major types—public, private, consortium, and hybrid blockchains—are designed for different requirements.
+
+Public blockchains are appropriate when decentralization and transparency are important. Private blockchains are useful for controlled enterprise environments. Consortium blockchains are suitable when multiple organizations need to share a trusted system, while hybrid blockchains provide a combination of privacy and transparency.
+
+Therefore, the selection of a blockchain type depends on factors such as number of participants, level of decentralization, privacy requirements, transaction speed, and governance. As blockchain technology continues to develop, its use is expected to expand into more real-world business and public-sector applications

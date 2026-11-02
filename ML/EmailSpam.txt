@@ -1,0 +1,157 @@
+# Email Spam Detection
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report)
+
+df = pd.read_csv("emails.csv")
+print(df.head())
+print(df.shape)
+print(df.columns)
+
+# Check missing values
+print(df.isnull().sum())
+
+# If there are missing values, we can remove them:
+df = df.dropna()
+
+# Understand the target column
+print(df["Prediction"].value_counts())
+
+# value_counts() counts how many times each unique value occurs in a column.
+
+# Input features - every column except Prediction column
+X = df.drop(["Email No.", "Prediction"], axis=1) # axis = 1 means remove the column named "Prediction" and "Email No"
+
+# Target is Prediction
+y = df["Prediction"]
+
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42, stratify = y)
+
+# KNN Model
+knn_model = KNeighborsClassifier(n_neighbors = 5)
+# n_neighbors is a parameter of KNN that tells the model how many nearest data points (neighbors)
+# to consider when making a prediction.
+
+# Train model
+knn_model.fit(X_train, y_train)
+
+# Make predictions
+y_pred_knn = knn_model.predict(X_test)
+
+# Evaluate KNN
+# Accuracy Score - percentage of total predictions that are correctly classified by the model. Higher better
+knn_accuracy = accuracy_score(y_test, y_pred_knn)
+print("knn accuracy : ", knn_accuracy)
+
+print()
+
+# Precision - how many of the emails predicted as Spam were actually Spam. Higher better
+knn_precision = precision_score(y_test, y_pred_knn)
+print("knn precision : ", knn_precision)
+
+print()
+
+# Recall - how many of the actual Spam emails were correctly detected by the model. Higher better
+knn_recall = recall_score(y_test, y_pred_knn)
+print("knn recall : ", knn_recall)
+
+print()
+
+# F1-score - combines Precision and Recall. Higher better
+knn_f1 = f1_score(y_test, y_pred_knn)
+print("knn f1 score : ", knn_f1)
+
+# Confusion matrix for knn - table that shows how many predictions were correct and how many
+# were wrong for each class.
+knn_cm = confusion_matrix(y_test, y_pred_knn)
+
+print("knn Confusion Matrix : ")
+print(knn_cm)
+
+#                  Predicted
+#                0       1
+# Actual  0     TN      FP
+#         1     FN      TP
+# - TN = Correctly predicted Not Spam
+# - FP = Normal email incorrectly classified as Spam
+# - FN = Spam incorrectly classified as Not Spam
+# - TP = Correctly predicted Spam
+
+# Classification report for knn -summary of the model's performance for each class.
+print("knn Classification Report : ")
+print(classification_report(y_test, y_pred_knn))
+
+# SVM Model
+svm_model = SVC(kernel = "linear")   # kernel="linear" means we are using a linear decision boundary.
+
+# Train model
+svm_model.fit(X_train, y_train)
+
+# Make predictions
+y_pred_svm = svm_model.predict(X_test)
+
+# Evaluate SVM
+svm_accuracy = accuracy_score(y_test, y_pred_svm)
+print("svm accuracy : ", svm_accuracy)
+
+print()
+
+svm_precision = precision_score(y_test, y_pred_svm)
+print("svm precision : ", svm_precision)
+
+print()
+
+svm_recall = recall_score(y_test, y_pred_svm)
+print("svm recall : ", svm_recall)
+
+print()
+
+svm_f1 = f1_score(y_test, y_pred_svm)
+print("svm f1 score : ", svm_f1)
+
+# Confusion matrix for knn
+svm_cm = confusion_matrix(y_test, y_pred_svm)
+
+print("svm Confusion Matrix : ")
+print(svm_cm)
+
+# Classification report for svm
+print("svm Classification Report : ")
+print(classification_report(y_test, y_pred_svm))
+
+# Compare KNN and SVM
+# Now create a simple comparison table
+
+results = pd.DataFrame({
+    "Model" : ["KNN", "SVM"],
+    "Accuracy" : [knn_accuracy, svm_accuracy],
+    "Precision" : [knn_precision, svm_precision],
+    "Recall" : [knn_recall, svm_recall],
+    "F1 Score" : [knn_f1, svm_f1]
+})
+
+print(results)
+
+# Visualization
+results.set_index("Model").plot(kind="bar")
+# results is your comparison DataFrame:
+# set_index("Model") makes KNN and SVM the x-axis labels.
+# plot(kind="bar") creates a bar chart.
+
+plt.title("KNN vs SVM Performance")
+plt.ylabel("Score")   # Labels the y-axis as Score.
+plt.ylim(0, 1)
+# Sets the y-axis range from 0 to 1, because accuracy, precision, recall, and F1-score are
+# values between 0 and 1.
+plt.xticks(rotation = 0) # Keeps the x-axis labels straight instead of rotating them.
+
+plt.show()   # Displays the graph.
+
+

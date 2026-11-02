@@ -1,0 +1,141 @@
+# Implement K-Means clustering/ hierarchical clustering on sales_data_sample.csv dataset.
+# Determine the number of clusters using the elbow method.
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from scipy.cluster.hierarchy import dendrogram, linkage
+from sklearn.cluster import AgglomerativeClustering
+
+df = pd.read_csv("sales_data_sample.csv",encoding="latin1")
+
+print(df.head())
+
+print(df.shape)
+
+print(df.columns)
+
+print(df.info())
+
+# Select features
+# input features
+X = df[["QUANTITYORDERED", "PRICEEACH", "SALES"]]
+
+# Check missing values
+print(X.isnull().sum())
+
+# If there are missing values, we can remove them:
+X = X.dropna()
+
+print(X.head())
+
+# Feature Scaling - important for clustering.
+scaler = StandardScaler()
+
+X_scaled = scaler.fit_transform(X)
+
+# Why scaling - SALES has much larger values.Without scaling, the distance calculation can be
+# dominated by the SALES feature.
+# StandardScaler converts the features approximately to:
+# mean = 0, standard deviation = 1
+# So all features get a comparable scale
+
+
+# Elbow Method - determine the number of clusters.
+
+# Inertia tells us how close the data points are to the center (centroid) of their cluster.
+# Lower inertia = better/compact clusters. But if we keep increasing k, inertia will always decrease.
+# So we look for the point where the decrease becomes much slower — the elbow.
+
+inertia = []   # Creates an empty list to store the inertia values for different values of k.
+
+# Runs the loop for:k = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, We are testing 1 to 10 clusters.
+for k in range(1, 11):
+  kmeans = KMeans(n_clusters = k, random_state = 42, n_init = 10) # Creates a K-Means model.
+  # n_clusters=k , Specifies how many clusters K-Means should create.k = 2 → 2 clusters
+  # n_init=10, K-Means can start with different initial centroid positions.means it runs K-Means 10 times with different initializations and keeps the best result.
+
+  kmeans.fit(X_scaled)
+  # performs the K-Means clustering on your scaled data
+
+  inertia.append(kmeans.inertia_)
+  # Gets the inertia value of the current K-Means model and stores it in the list.
+
+
+# Plot Elbow Graph
+plt.plot(range(1,11), inertia, marker="o")
+
+plt.xlabel("Number of clusters")
+plt.ylabel("Inertia")
+plt.title("Elbow Method")
+
+plt.show()
+
+# Apply K-Means
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+
+clusters = kmeans.fit_predict(X_scaled)
+
+# Add Cluster to Dataset
+df["Cluster"] = clusters
+print(df.head())
+
+# The numbers in Cluster column 1, 2 etc are simply cluster labels
+
+# Check Cluster Sizes
+print(df["Cluster"].value_counts())
+
+# This tells you how many records belong to each cluster.
+
+# Visualize Clusters
+# Since we're using three features, we can visualize two of them:
+
+plt.scatter(X["QUANTITYORDERED"], X["SALES"], c = clusters)   #The c=clusters part colors the points according to their cluster.
+
+plt.xlabel("Quantity Ordered")
+plt.ylabel("Sales")
+plt.title("K-Means Clusters")
+
+plt.show()
+
+# Hierarchical Clustering
+# First create the linkage matrix:
+linked = linkage(X_scaled, method="ward")
+# Ward linkage tries to minimize the variance within merged clusters.
+
+# Now create the dendrogram:
+plt.figure(figsize=(12,6))
+
+dendrogram(linked)   #The dendrogram helps us decide how many clusters to form.
+
+plt.title("Hierarchical Clustering Dendrogram")
+plt.xlabel("Data Points")
+plt.ylabel("Distance")
+
+plt.show()
+
+# As we move upward, similar points are merged into larger clusters.
+# A merge at a small distance means the groups are more similar.
+# A merge at a large distance means the groups are more different.
+
+# Apply Hierarchical Clustering
+# If the dendrogram suggests 3 clusters:
+
+# Create the clustering model
+hc = AgglomerativeClustering(n_clusters=3, linkage="ward")
+
+# Create the clusters
+# fit() → performs the hierarchical clustering on X_scaled.
+# predict() → assigns each data point to a cluster.
+# So fit_predict() does both together.
+hc_clusters = hc.fit_predict(X_scaled)
+
+# Add the result:
+df["Heierarchical_Cluster"] = hc_clusters
+
+# Check:
+print(df.head())
+

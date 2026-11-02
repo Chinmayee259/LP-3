@@ -1,0 +1,88 @@
+Practical: Create Your Own Wallet Using MetaMask for Crypto Transactions
+
+2. Practical Procedure
+Step 1: Install MetaMask
+Go to the official MetaMask website and install the browser extension.
+
+MetaMask official website
+
+Choose your browser and install the extension.
+Step 2: Open MetaMask
+After installation:
+1. Open the MetaMask extension.
+2. Select Create a new wallet.
+3. Accept the required terms.
+4. Create a strong password.
+Step 3: Secure Your Wallet
+MetaMask will display your Secret Recovery Phrase.
+
+You should:
+1. Write it down offline.
+2. Keep it somewhere secure.
+3. Never share it with anyone.
+4. Never enter it into a website claiming to "verify" your wallet.
+Then MetaMask will ask you to confirm the phrase.
+
+Once confirmed, your wallet is created.
+Step 4: View Your Wallet Address
+After creating the wallet, you will see your account.
+
+You can copy the wallet address.
+
+It will look something like:
+0xA1B2C3D4E5F6........
+
+This is your public wallet address.
+
+For your practical record, you can write:
+Wallet Address:
+0x................................
+
+Do not put your Secret Recovery Phrase in your practical record or screenshots.
+3. Perform a Crypto Transaction
+For a college practical, use a test network/test ETH rather than real cryptocurrency.
+Step 1: Select a Test Network
+In MetaMask, select an available Ethereum test network such as Sepolia.
+
+The exact interface/network options can change between MetaMask versions.
+Step 2: Get Test ETH
+Use an appropriate official Ethereum testnet faucet to obtain test ETH.
+Open this Sepolia faucet:
+
+Sepolia Faucet
+
+A faucet is simply a website that gives you free test ETH for practice.
+
+The test ETH has no real monetary value.
+
+You generally provide your testnet wallet address and receive test ETH.
+Step 3: Create a Second Test Wallet
+You can create another account/wallet for demonstration.
+
+For example:
+Wallet A → Sender
+Wallet B → Receiver
+
+Copy Wallet B's public address.
+Step 4: Send Test ETH
+From Wallet A:
+1. Click Send.
+2. Enter Wallet B's public address.
+3. Enter a small test amount, for example:
+0.001 ETH
+
+4. Review the transaction.
+5. Check the estimated gas fee.
+6. Click Confirm.
+The transaction will be submitted to the blockchain.
+Step 5: Verify the Transaction
+After confirmation, you can view the transaction details in MetaMask or through a testnet blockchain explorer.
+
+You will typically see:
+From:       Wallet A
+To:         Wallet B
+Amount:     0.001 ETH
+Status:     Confirmed
+Transaction Hash: 0x........
+
+The transaction hash is a unique identifier for the transaction.

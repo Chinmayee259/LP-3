@@ -1,0 +1,84 @@
+# Implement K-Nearest Neighbors algorithm on diabetes.csv dataset. Compute confusion matrix, accuracy, error rate, precision and recall
+# on the given dataset.
+
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+
+from sklearn.metrics import (confusion_matrix, accuracy_score, precision_score, recall_score, classification_report)
+
+df = pd.read_csv("diabetes.csv")
+
+print(df.head())
+
+print(df.shape)
+
+print(df.info())
+
+# Separate features and target
+# target column is Outcome.
+X = df.drop("Outcome", axis = 1)
+y = df["Outcome"]
+
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+
+# Feature Scaling
+scaler = StandardScaler()    # Create the scaler
+# StandardScaler converts each feature so that:
+# - Mean = 0
+# - Standard deviation = 1
+
+X_train = scaler.fit_transform(X_train)
+# fit() → calculates the mean and standard deviation from X_train.
+# transform() → uses those values to standardize X_train.
+
+X_test = scaler.transform(X_test)
+# learn the scaling parameters + apply scaling
+
+# Create KNN Model
+knn = KNeighborsClassifier(n_neighbors = 5)   # The model looks at the 5 nearest neighbors when making a prediction
+
+knn.fit(X_train, y_train)
+# The KNN model stores the training data so that it can find nearest neighbors when making predictions.
+
+y_pred = knn.predict(X_test)
+# y_pred contains the predicted diabetes classes.
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+print("Confusion Matrix : ")
+print(cm)
+
+# Accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+print("Accuracy : ", accuracy)
+
+print("Accuracy percentage: ", accuracy * 100, "%")
+
+# Error Rate
+error_rate = 1 - accuracy
+
+print("Error Rate : ", error_rate)
+
+print("Error Rate in percentage : ", error_rate * 100, "%")
+
+# Precision
+precision = precision_score(y_test, y_pred)
+
+print("Precision : ", precision)
+
+#  Recall
+recall = recall_score(y_test, y_pred)
+
+print("Recall : ", recall)
+
+# Classification Report
+print("Classification Report : ")
+print(classification_report(y_test, y_pred))
+
