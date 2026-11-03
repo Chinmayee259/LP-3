@@ -69,4 +69,4 @@ int main()
 {   jobschedule obj;
     obj.solve();
     return 0;
-}  me ha simple code ghetlay
+}  
